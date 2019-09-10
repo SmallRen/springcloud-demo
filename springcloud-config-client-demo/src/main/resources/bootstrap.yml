@@ -1,0 +1,30 @@
+server:
+  port: 9007
+spring:
+  application:
+    name: config-client
+  rabbitmq:
+    host: 192.168.0.135
+    port: 5672
+    username: daqsoft
+    password: daqsoft-mq
+  cloud:
+    config:
+      label: master
+      profile: user
+      uri: http://localhost:9006/
+      discovery:
+        enabled: true
+        service-id: config-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+management:
+  server:
+    port: 9007
+  endpoints:
+    web:
+      #      base-path: / #默认是/actuator 前缀，可以在这里修改
+      exposure:
+        include: "*"  #打开全部请求端点

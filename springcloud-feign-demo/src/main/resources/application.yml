@@ -1,0 +1,27 @@
+
+server:
+  port: 8764
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: ribbon
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true #Greenwich.SR2 版本默认开启
+client:
+  ribbon:
+    ReadTimeout: 300 # 读超时时间
+    ConnectTimeout: 500 # 连接超时时间
+    MaxAutoRetries: 1 # 访问当前的节点重试次数，例如选择了节点A ，A访问不通，则重试一次。
+    MaxAutoRetriesNextServer: 2 #当重试完当前节点之后，选择下一个节点的次数。
+    OkToRetryOnAllOperations: true # 所有的请求都失败重试
+    #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
+    #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+    #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    # 其他负载均衡算法，参考相应包下的类。
+    #NFLoadBalancerRuleClassName: com.umpay.uchains.proxy.loadbalance.rule.IpHashRule #这是自己实现的负载均衡算法
+    #NFLoadBalancerClassName: com.netflix.loadbalancer.ZoneAwareLoadBalancer #这是负载均衡的一个控制器。
