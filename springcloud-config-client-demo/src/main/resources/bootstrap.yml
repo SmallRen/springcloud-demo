@@ -19,7 +19,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://admin:r011698.@localhost:8761/eureka/
 management:
   server:
     port: 9007
